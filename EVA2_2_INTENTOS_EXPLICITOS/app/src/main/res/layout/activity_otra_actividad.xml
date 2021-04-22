@@ -4,14 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#FF80AB"
-    android:orientation="vertical"
-    tools:context=".MainActivity">
+    android:background="#84FFFF"
+    tools:context=".OtraActividad">
 
-    <Button
-        android:id="@+id/btn"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:onClick="Onclick"
-        android:text="Lanzar actividad" />
 </LinearLayout>
