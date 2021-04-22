@@ -17,6 +17,8 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
     }
+
+    //----------INTENTS EXPLÍCITOS----------//
     public void onClickDial (View v){
         //MARCAR PERO NO LLAMAR
         inTel=new Intent(Intent.ACTION_DIAL, Uri.parse(TEL)); //Accion: marcar, Dato:TEL
@@ -38,11 +40,15 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void onClickUrl (View v){
+        //ABRIR URL
+        //No es la app la que tiene conexión, sino otra, en este caso el navegador
         String sData = "https://youtube.com/";
-        inTel=new Intent(Intent.ACTION_VIEW, Uri.parse(sData));
-        startActivity(inTel);
+        Intent intent =new Intent(Intent.ACTION_VIEW, Uri.parse(sData));
+        startActivity(intent);
         /*String myUriString = "https://youtube.com/";
         Intent myActivity2 = new Intent(Intent.ACTION_VIEW, Uri.parse(myUriString));
         startActivity(myActivity2);*/
     }
+
+
 }
