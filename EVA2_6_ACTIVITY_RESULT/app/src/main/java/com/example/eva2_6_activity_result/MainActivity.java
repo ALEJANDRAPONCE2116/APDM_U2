@@ -6,20 +6,24 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
+import android.provider.ContactsContract;
 import android.view.View;
 import android.widget.Button;
 import android.widget.Toast;
 
 public class MainActivity extends AppCompatActivity{
     final static int COD_SEC=1000;
-Button btnIniSecu;
-    Intent intent;
+    final static  int COD_CONTACTOS=2000;
+    Button btnIniSecu;
+    Intent intent, intentCont, intentImg;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         intent = new Intent(this, MainActivity2.class);
+        intentCont = new Intent(Intent.ACTION_PICK, android.provider.ContactsContract.Contacts.CONTENT_URI);
+        intentImg = new Intent(Intent.ACTION_PICK, android.provider.ContactsContract.Contacts.CONTENT_URI);
     }
 
     @Override
@@ -30,6 +34,10 @@ Button btnIniSecu;
             @Override
             public void onClick(View view) {
                 startActivityForResult(intent, COD_SEC);
+            }
+            switch(requestCode){
+                case COD_SEC:
+                    if(resul)
             }
         });
     }
@@ -52,7 +60,14 @@ Button btnIniSecu;
                 break;
             default:
         }
+        String returnedData = data.getDataString();
         //2. identificar si se devolvio un valor o no RESULT_OK
 
+    }
+
+    public void onClickCont(View view){
+        if(view.getId()==R.id.btnCont){
+            startActivityForResult(intent, COD_SEC);
+        }
     }
 }
