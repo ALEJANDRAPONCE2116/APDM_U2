@@ -19,5 +19,12 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:onClick="onClickCont"
-        android:text="Button" />
+        android:text="Seleccionar contactos" />
+
+    <Button
+        android:id="@+id/btnImg"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:onClick="onClickCont"
+        android:text="Seleccionar imagen" />
 </LinearLayout>

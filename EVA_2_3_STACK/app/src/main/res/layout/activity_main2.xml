@@ -8,10 +8,10 @@
     tools:context=".MainActivity2">
 
     <Button
-        android:id="@+id/btnIniciarAct"
+        android:id="@+id/btnCerrarAct"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_weight="1"
         android:onClick="OnClickMain2"
-        android:text="INICIAR ACTIVIDAD" />
+        android:text="CERRAR ACTIVIDAD" />
 </LinearLayout>

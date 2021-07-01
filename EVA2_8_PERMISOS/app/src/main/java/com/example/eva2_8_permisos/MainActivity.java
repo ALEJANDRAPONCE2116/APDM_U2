@@ -27,11 +27,14 @@ final static int PERMISO_LLAMAR=100;
         btnLlamar=findViewById(R.id.button);
         //primero en oncreate para que en cuanto la app arranque hacer la verif de los permisos
         //Aqui verifico si no tengo el permiso
-        if(ContextCompat.checkSelfPermission(this, Manifest.permission.CALL_PHONE) != PackageManager.PERMISSION_GRANTED){ //regresa un entero
+        if(ContextCompat.checkSelfPermission(this,
+                Manifest.permission.CALL_PHONE) != PackageManager.PERMISSION_GRANTED){ //regresa un entero
             Toast.makeText(this, "NO TIENES PERMISO", Toast.LENGTH_LONG).show();
-            //solicitar permiso
-            ActivityCompat.requestPermissions(this,new String[]{Manifest.permission.CALL_PHONE},PERMISO_LLAMAR);
             btnLlamar.setEnabled(false);
+            //solicitar permiso
+            ActivityCompat.requestPermissions(this,
+                    new String[]{Manifest.permission.CALL_PHONE},
+                    PERMISO_LLAMAR);
         }
         else{//se ejecuta alguna accion si la app tiene el permiso
             Toast.makeText(this, "YA TIENES PERMISO", Toast.LENGTH_LONG).show();
@@ -42,7 +45,7 @@ final static int PERMISO_LLAMAR=100;
     @Override
     protected void onStart() {
         super.onStart();
-        edtTxTel=findViewById(R.id.editTextTextPersonName);
+        edtTxTel=findViewById(R.id.editText);
     }
 
     public void onClick(View view) {

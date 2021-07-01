@@ -12,6 +12,7 @@ Intent intent;
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        intent  = new Intent(this, MainActivity2.class);
     }
     public void onClickMain1(View view){
         startActivity(intent);

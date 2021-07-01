@@ -5,6 +5,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.app.Activity;
 import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
 import android.provider.ContactsContract;
 import android.view.View;
@@ -14,6 +15,7 @@ import android.widget.Toast;
 public class MainActivity extends AppCompatActivity{
     final static int COD_SEC=1000;
     final static  int COD_CONTACTOS=2000;
+    final static int COD_IMAGENES = 3000;
     Button btnIniSecu;
     Intent intent, intentCont, intentImg;
 
@@ -23,7 +25,7 @@ public class MainActivity extends AppCompatActivity{
         setContentView(R.layout.activity_main);
         intent = new Intent(this, MainActivity2.class);
         intentCont = new Intent(Intent.ACTION_PICK, android.provider.ContactsContract.Contacts.CONTENT_URI);
-        intentImg = new Intent(Intent.ACTION_PICK, android.provider.ContactsContract.Contacts.CONTENT_URI);
+        intentImg = new Intent(Intent.ACTION_PICK, Uri.parse("content://media/external/images/media"));
     }
 
     @Override
@@ -33,11 +35,8 @@ public class MainActivity extends AppCompatActivity{
         btnIniSecu.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                intent.putExtra("DATOS", "Info enviada desde principal");
                 startActivityForResult(intent, COD_SEC);
-            }
-            switch(requestCode){
-                case COD_SEC:
-                    if(resul)
             }
         });
     }
@@ -58,6 +57,19 @@ public class MainActivity extends AppCompatActivity{
                     Toast.makeText(this, data.getStringExtra("VALOR"), Toast.LENGTH_LONG).show();
                 }
                 break;
+            case COD_CONTACTOS:
+                if (resultCode==Activity.RESULT_OK){
+                    String returnedData = data.getDataString();
+                    Toast.makeText(this, returnedData, Toast.LENGTH_SHORT).show();
+
+                }
+                    break;
+            case COD_IMAGENES:
+                if (resultCode==Activity.RESULT_OK){
+                    String returnedData = data.getDataString();
+                    Toast.makeText(this, returnedData, Toast.LENGTH_SHORT).show();
+                }
+                break;
             default:
         }
         String returnedData = data.getDataString();
@@ -67,7 +79,9 @@ public class MainActivity extends AppCompatActivity{
 
     public void onClickCont(View view){
         if(view.getId()==R.id.btnCont){
-            startActivityForResult(intent, COD_SEC);
+            startActivityForResult(intentCont, COD_CONTACTOS);
+        }else{
+            startActivityForResult(intentImg, COD_IMAGENES);
         }
     }
 }

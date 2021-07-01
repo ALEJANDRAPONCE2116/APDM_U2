@@ -49,6 +49,4 @@ public class MainActivity extends AppCompatActivity {
         Intent myActivity2 = new Intent(Intent.ACTION_VIEW, Uri.parse(myUriString));
         startActivity(myActivity2);*/
     }
-
-
 }

@@ -32,7 +32,7 @@ TextView txtVwDatos;
         else
             txtVwDatos.append("Sin informacion \n");
 
-        //RadioButton rdTemp = findViewById(R.id.button)
+        RadioButton rdTemp = findViewById(iEstado);
         txtVwDatos.append("Estado civil \n");
         txtVwDatos.append(iEstado + "\n");
         }
